@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Appy.Views.Dashboard.DashboardPage"
+             xmlns:cv="clr-namespace:Camera.MAUI;assembly=Camera.MAUI"
+             xmlns:gv="clr-namespace:BarcodeScanner.Mobile;assembly=BarcodeScanner.Mobile.Maui"
+             xmlns:handler="clr-namespace:Appy.Handlers"
+             Title="Home">
+    <StackLayout>
+            <!-- top controls -->
+            <!--<WebView x:Name="webView" HeightRequest="600" WidthRequest="376" Margin="3,0,3,3" />-->
+            <!-- middle controls -->
+            <Image x:Name="imgQr" Aspect="AspectFill"  Source="qr_img.svg" />
+            <Button IsVisible="false" FontSize="Title" BackgroundColor="Transparent"  HeightRequest="40" TextColor="Red" FontFamily="FASolid" Text="{x:Static handler:FontAwesomeIcons.Xmark}" 
+                Clicked="btn_cancel_Clicked" x:Name="btn_cancel"
+                WidthRequest="50"  VerticalOptions="End" HorizontalOptions="EndAndExpand" ToolTipProperties.Text="Close" Margin="10,10,20,10" Padding="5" />
+        <gv:CameraView x:Name="Camera" WidthRequest="0" HeightRequest="0"  
+                           OnDetected="Camera_BarcodeDetected"  />  
+        <!--<cv:CameraView x:Name="cameraView" WidthRequest="0" HeightRequest="0"  CamerasLoaded="cameraView_CamerasLoaded" BarCodeDetectionEnabled="True"
+                           BarcodeDetected="cameraView_BarcodeDetected"  />-->
+       
+        
+        <Switch WidthRequest="300" HeightRequest="20" IsVisible="false"  x:Name="FlashlightSwitch" Toggled="FlashlightSwitch_Toggled" BackgroundColor="#77258b" ThumbColor="#fff">
+            </Switch>
+        
+        <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" HorizontalOptions="FillAndExpand">
+            <!-- bottom controls -->
+            <Button Text="Scan" HorizontalOptions="CenterAndExpand"
+                    TextColor="#FFF" BackgroundColor="#77258b" ToolTipProperties.Text="Scan"  Margin="20"
+                 WidthRequest="180"   Clicked="btn_scan_Clicked" x:Name="btn_scan"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
